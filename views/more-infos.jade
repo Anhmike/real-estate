@@ -1,0 +1,44 @@
+mixin advert(name, location, description, image, id, available_date, price)
+	.row.featurette
+		.col-md-7
+			h2.featurette-heading #{name}: 
+				span.text-muted #{location}
+			p.lead #{description}
+			p.lead #{price} €
+			p.lead Available date : #{available_date}
+		.col-md-5
+			img.featurette-img.img-responsive(src="#{image}", alt='a picture of this advert')
+		hr.row.featurette
+		
+
+!!! 5
+html(lang="en")
+	head
+		include header
+		link(href='/css/carousel.css', rel='stylesheet')
+		link(href='/bower_components/dropzone/downloads/css/dropzone.css', rel='stylesheet')
+		//- link(href='/bower_components/bootstrap/examples/offcanvas/offcanvas.css', rel='stylesheet')
+	body
+		.navbar-wrapper
+			.container
+				.navbar.navbar-inverse.navbar-static-top(role="navigation")
+					.container
+						.navbar-header
+							a.navbar-brand(href="/") Real Estate
+						.navbar-collapse.collapse
+							ul.nav.navbar-nav
+								li: a(href="/") Home
+								li: a(href="/#my_map") Map
+
+		#myCarousel.carousel.slide(data-ride="carousel")
+			.carousel-inner
+				.item.active
+					img(src='#{infos.file_path}')
+					.container
+						.carousel-caption
+							h1 #{infos.name}
+		.container.marketing
+			hr.featurette-divider
+			+advert(infos.name, infos.country, infos.description, infos.file_path, infos._id,infos.available_date, infos.price)
+
+		include footer

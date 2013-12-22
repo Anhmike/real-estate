@@ -1,0 +1,21 @@
+{
+  "name": "public",
+  "version": "0.0.0",
+  "authors": [
+    "Mercier Bastien <method1990@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.0.2",
+    "d3": "~3.3.10",
+    "dropzone": "~3.7.3",
+    "lodash": "~2.3.0"
+  }
+}

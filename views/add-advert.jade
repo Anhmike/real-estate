@@ -1,0 +1,89 @@
+mixin input-text(identifiant, name, placeholder, value)
+	.form-group
+		label.col-md-3.control-label(for='#{identifiant}') #{name}
+		.col-md-5
+			if value !== 'none' && value !== undefined
+				input.form-control(type='text',name="#{identifiant}", id="#{identifiant}", placeholder="#{placeholder}",value='#{value}' required)
+			else
+				input.form-control(type='text',name="#{identifiant}", id="#{identifiant}", placeholder="#{placeholder}", required)
+
+mixin text-area(identifiant, name, row, placeholder, value)
+	.form-group
+		label.col-md-3.control-label(for="#{identifiant}") #{name}
+		.col-md-5
+			if value !== 'none' && value !== undefined
+				textarea(id="#{identifiant}", name="#{identifiant}", placeholder="#{placeholder}", cols="35",rows="#{row}", required).form-control #{value}
+			else
+				textarea(id="#{identifiant}", name="#{identifiant}", placeholder="#{placeholder}",  cols="35",rows="#{row}", required).form-control
+
+mixin input-price(identifiant, name, placeholder, value)
+	.form-group
+		label.col-md-3.control-label(for='#{identifiant}') #{name}
+		.col-md-5
+			if value !== 'none' && value !== undefined
+				input.form-control(type='text',name="#{identifiant}", id="#{identifiant}", placeholder="#{placeholder}",valuepattern='[0-9]+(.[0-9]*)?',title='examples: 100.50 or 100',value='#{value}',required)
+			else
+				input.form-control(type='text',name="#{identifiant}", id="#{identifiant}", placeholder="#{placeholder}",valuepattern='[0-9]+(.[0-9]*)?',title='examples: 100.50 or 100',required)
+
+mixin input-date(identifiant, name, date)
+	.form-group
+		label.col-md-3.control-label(for='#{identifiant}') Available date
+		.col-md-5
+			if date !== 'none' && date !== undefined
+				input.form-control(type='date', name='#{identifiant}', id='#{identifiant}', min='current_date', value='#{date}', required)
+			else
+				input.form-control(type='date', name='#{identifiant}', id='#{identifiant}', min='current_date', required)
+!!! 5
+html(lang="en")
+	head
+		include header
+		link(href='/css/carousel.css', rel='stylesheet')
+		link(href='/bower_components/dropzone/downloads/css/dropzone.css', rel='stylesheet')
+		link(href='/bower_components/bootstrap/examples/offcanvas/offcanvas.css', rel='stylesheet')
+	body
+		.navbar-wrapper
+			.container
+				.navbar.navbar-inverse.navbar-static-top(role="navigation")
+					.container
+						.navbar-header
+							a.navbar-brand(href="/") Real Estate
+						.navbar-collapse.collapse
+							ul.nav.navbar-nav
+								li: a(href="/") Home
+								li: a(href="/#my_map") Map
+
+		.container.col-md-offset-3.col-md-6
+			fieldset(class='col-md-8')
+				legend: h1 Add an advert
+			#dropzone.col-md-6
+				form(action='/file_upload',method="post", class="dropzone", id="my-dropzone")
+					input(type="hidden", value="#{param.id}", name="identifiant")	
+			
+					
+
+		.container	
+				form(method='post', class='form-horizontal col-md-8 col-md-offset-3', action='/traitement_advert')
+					input(type="hidden", value="#{param.id}", name="identifiant")
+					+input-text("name", "Name", "Advert name", param.name)
+					+input-text("country", "Country", "Advert's country", param.country)
+					+input-price("price", "Price", "Price", param.price )
+					+text-area("description", "Description", "5", "Type the description of the advert", param.description)
+					+input-date("date", "Available date",param.date)
+					input(type="submit" value="Add").btn.btn-primary.col-md-offset-1
+					input(type="button" value="Remove").btn.btn-danger.col-md-offset-4
+
+		
+		include footer
+		script(src="/bower_components/dropzone/downloads/dropzone.js")
+		script.
+			$(document).ready(function(){
+				Dropzone.options.myDropzone = {
+					addRemoveLinks : true
+				};
+
+				$('input[type=button]').click(function(d){
+					window.location = '/remove/id/'+ !{JSON.stringify(param.id)};
+				});
+			});
+			
+//id, name, price, description, date, path

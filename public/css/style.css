@@ -1,0 +1,18 @@
+.infos {
+	position: absolute;
+	border: solid 1px black;
+	height: 200px;
+	width: 100px;
+	background-color: rgba(255,255,255,0.7);
+}
+
+
+#my_map {
+	position: relative;
+	top:100px;
+	left:50px;
+}
+
+svg{
+	background-color: #F2F2F2;
+}

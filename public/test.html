@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Real Estate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/icon.png">
+    <link rel="stylesheet" type="text/css" href="/bower_components/bootstrap/examples/offcanvas/offcanvas.css">
+  <!-- <link rel="stylesheet" type="text/css" href="/bower_components/dropzone/downloads/css/dropzone.css"> -->
+  </head>
+  
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+        <div role="navigation" class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header"><a href="#" class="navbar-brand">Real Estate</a></div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Map</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <fieldset>
+        <legend>
+          <h1>Add an advert</h1>
+        </legend>
+        <form method="post" action="/traitement" class="form-horizontal col-md-8 col-md-offset-2">
+          <input type="hidden" value="-628377" name="id">
+          <div class="form-control">
+            <label for="name" class="col-md-3 control-label">Name</label>
+            <div class="col-md-5">
+              <input type="text" id="name" placeholder="Advert name" value="none" required="required" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-control">
+            <label for="country" class="col-md-3 control-label">Country</label>
+            <div class="col-md-5">
+              <input type="text" id="country" placeholder="Advert's country" value="none" required="required" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-control">
+            <label for="price" class="col-md-3 control-label">Price</label>
+            <div class="col-md-5">
+              <input type="text" id="price" placeholder="Price" valuepattern="[0-9]+(.[0-9]*?" title="examples: 100.50 or 100" value="none" required="required" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-control">
+            <label for="description" class="col-md-3 control-label">Description</label>
+            <div class="col-md-5">
+              <textarea id="-628377" name="Description" placeholder="Type the description of the advert" row="5" required="required">none</textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="date" class="col-md-3 control-label">Available date</label>
+            <div class="col-md-5">
+              <input type="date" name="Available date" id="date" min="current_date" required="required" class="form-control"/>
+            </div>
+          </div>
+          <!-- dropzone-->
+        </form>
+      </fieldset>
+    </div>
+  </body>
+  <footer>
+    <p class="pull-right"><a href="#">Back to top</a></p>
+    <p>&copy; 2013 MERCIER Bastien &middot;</p>
+  </footer>
+  <script src="/bower_components/jquery/jquery.min.js"></script>
+  <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/bower_components/dropzone/downloads/dropzone.js"></script>
+  <script>
+    $(document).ready(function(){
+     Dropzone.options.myDropzone = {
+      addRemoveLinks : true
+     };
+    });
+  </script>
+</html>
+<!--id, name, price, description, date, path-->
