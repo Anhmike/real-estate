@@ -1,7 +1,7 @@
 real-estate
 ===========
 
-a master 2 project i did for web development using node.js, express.js, jade, lodash, cradle and jquery as well, in front end i use bower to manage dependencies, i'm using bootstrap, d3 (to rendering svg), and lodash.
+a master 2 project i did for web development using node.js, express.js, jade, lodash, cradle and jquery as well, in front end i use bower to manage dependencies, i'm using bootstrap, d3 (to rendering svg),lodash and dropzone.
 
 I'm also using couchDB to store my data.
 
